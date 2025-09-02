@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: productapp-api
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/akshaykam/ProductApp-API.git'  # change <YOUR_ORG>
+    targetRevision: HEAD
+    path: apps/productapp-api
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: productapp
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

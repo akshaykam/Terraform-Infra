@@ -1,0 +1,6 @@
+replicaCount: 2
+image:
+  repository: "543816070942.dkr.ecr.us-east-1.amazonaws.com/productapp-api"
+  tag: "0.1.0"    # CI will update this
+service:
+  type: ClusterIP

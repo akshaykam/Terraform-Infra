@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: productapp-ingress
+  namespace: productapp
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"   # set to staging for testing
+spec:
+  tls:
+    - hosts:
+        - gitops.dockeroncloud.com
+      secretName: gitops-tls
+  rules:
+    - host: gitops.dockeroncloud.com
+      http:
+        paths:
+          - path: /api(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: productapp-api
+                port:
+                  number: 8080
+          - path: /(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: productapp-ui
+                port:
+                  number: 80
