@@ -1,29 +1,24 @@
-variable "region" {
-  type    = string
-  default = "us-east-1"
+variable "aws_region" {
+  description = "AWS region"
+  type        = string
+  default     = "us-east-1"
 }
 
 variable "cluster_name" {
   type    = string
-  default = "productapp-eks-public"
+  default = "retail-eks-public"
 }
 
-variable "domain" {
+variable "vpc_cidr" {
   type    = string
-  default = "gitops.dockeroncloud.com"
+  default = "10.0.0.0/16"
 }
 
-variable "github_org" {
-  type    = string
-  default = "your-gh-org" # replace with your GitHub org or username
+variable "public_subnet_cidrs" {
+  type    = list(string)
+  default = ["10.0.1.0/24", "10.0.2.0/24"] # two AZs
 }
 
-variable "github_repo_ops" {
-  type    = string
-  default = "ops-gitops"
-}
-
-variable "public_zone_id" {
-  type = string
-  default = "Z287FG27N5HFVA" # fill with your Route53 Hosted Zone ID if you already have one
-}
+variable "node_group_min" { type = number default = 1 }
+variable "node_group_max" { type = number default = 2 }
+variable "node_instance_type" { type = string default = "t3.medium" }
