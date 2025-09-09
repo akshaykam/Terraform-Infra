@@ -5,7 +5,7 @@ variable "region" {
 
 variable "cluster_name" {
   type    = string
-  default = "productapp-eks"
+  default = "productapp-eks-public"
 }
 
 variable "domain" {
