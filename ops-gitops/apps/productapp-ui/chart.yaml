@@ -1,0 +1,4 @@
+apiVersion: v2
+name: product-ui
+version: 0.1.0
+description: Product UI helm chart

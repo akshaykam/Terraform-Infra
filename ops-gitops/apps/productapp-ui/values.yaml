@@ -1,0 +1,10 @@
+replicaCount: 1
+image:
+  repository: "543816070942.dkr.ecr.us-east-1.amazonaws.com/productapp-ui"
+  tag: "latest"
+service:
+  port: 80
+ingress:
+  enabled: true
+  host: "example.com"
+  path: /
