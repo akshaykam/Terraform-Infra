@@ -6,5 +6,5 @@ service:
   port: 80
 ingress:
   enabled: true
-  host: "example.com"
+  host: "gitops.dockeroncloud.com"
   path: /

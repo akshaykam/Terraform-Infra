@@ -6,5 +6,5 @@ service:
   port: 8080
 ingress:
   enabled: true
-  host: "example.com"    # set actual host
+  host: "gitops.dockeroncloud.com"    # set actual host
   path: /api
